@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LaserSell CLI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --font-sans: "Inter", sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+
+        --background: 0 0% 100%;
+        --foreground: 240 10% 3.9%;
+
+        --card: 0 0% 100%;
+        --card-foreground: 240 10% 3.9%;
+
+        --muted: 240 4.8% 95.9%;
+        --muted-foreground: 240 3.8% 46.1%;
+
+        --primary: 142 71% 29%;
+        --primary-foreground: 0 0% 98%;
+
+        --border: 240 5.9% 90%;
+        --ring: 142 71% 29%;
+
+        --quick-bg: 0 0% 98%;
+        --quick-border: 240 5.9% 90%;
+
+        --radius: 0.75rem;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background: 240 10% 3.9%;
+          --foreground: 0 0% 98%;
+
+          --card: 240 10% 6%;
+          --card-foreground: 0 0% 98%;
+
+          --muted: 240 3.7% 15.9%;
+          --muted-foreground: 240 5% 64.9%;
+
+          --primary: 158 93% 41%;
+          --primary-foreground: 240 5.9% 10%;
+
+          --border: 240 3.7% 15.9%;
+          --ring: 158 93% 41%;
+
+          --quick-bg: 240 10% 6%;
+          --quick-border: 240 3.7% 15.9%;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font-sans);
+        line-height: 1.6;
+        color: hsl(var(--foreground));
+        background-color: hsl(var(--background));
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      body::before {
+        background-image:
+          radial-gradient(1200px circle at 10% -10%, rgba(21, 128, 61, 0.18), transparent 55%),
+          radial-gradient(900px circle at 90% 10%, rgba(24, 24, 27, 0.06), transparent 45%),
+          radial-gradient(700px circle at 50% 110%, rgba(24, 24, 27, 0.08), transparent 45%);
+      }
+
+      body::after {
+        background-image:
+          linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body::before {
+          background-image:
+            radial-gradient(1000px circle at 10% -10%, rgba(7, 201, 131, 0.18), transparent 55%),
+            radial-gradient(800px circle at 90% 10%, rgba(39, 39, 42, 0.25), transparent 45%),
+            radial-gradient(900px circle at 50% 120%, rgba(3, 7, 18, 0.6), transparent 50%);
+        }
+      }
+
+      main {
+        max-width: 1040px;
+        margin: 56px auto;
+        padding: 0 20px 60px;
+      }
+
+      .shell {
+        background: hsl(var(--card));
+        border-radius: calc(var(--radius) + 0.5rem);
+        padding: 36px;
+        border: 1px solid hsl(var(--border));
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.14);
+        position: relative;
+      }
+
+      header.hero {
+        display: grid;
+        gap: 24px;
+        margin-bottom: 28px;
+      }
+
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.28em;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: hsl(var(--primary));
+      }
+
+      h1 {
+        margin: 8px 0 10px;
+        font-size: clamp(2.2rem, 3vw, 3rem);
+      }
+
+      h2 {
+        margin: 0 0 10px;
+        font-size: 1.5rem;
+      }
+
+      h3 {
+        margin: 0 0 8px;
+        font-size: 1.1rem;
+      }
+
+      p {
+        margin: 0 0 14px;
+        color: hsl(var(--muted-foreground));
+      }
+
+      .subtitle {
+        font-size: 1.05rem;
+      }
+
+      .quick-install {
+        display: grid;
+        gap: 12px;
+        padding: 18px 20px;
+        border-radius: calc(var(--radius) + 0.25rem);
+        border: 1px solid hsl(var(--quick-border));
+        background: hsl(var(--quick-bg));
+      }
+
+      .quick-install p {
+        margin: 0;
+      }
+
+      .quick-install pre {
+        background: hsl(var(--muted));
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+      }
+
+      .section-title p {
+        margin: 0;
+        font-size: 0.95rem;
+      }
+
+      .tabs {
+        margin-top: 8px;
+      }
+
+      .tab-list {
+        display: inline-flex;
+        padding: 6px;
+        border-radius: 999px;
+        border: 1px solid hsl(var(--border));
+        background: hsl(var(--muted));
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+
+      .tab {
+        appearance: none;
+        border: 0;
+        background: transparent;
+        color: hsl(var(--muted-foreground));
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 8px 16px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .tab:focus-visible {
+        outline: 2px solid hsl(var(--ring));
+        outline-offset: 2px;
+      }
+
+      .tab.is-active {
+        background: hsl(var(--background));
+        color: hsl(var(--foreground));
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      }
+
+      .tab-panels {
+        margin-top: 20px;
+      }
+
+      .tab-panel {
+        display: none;
+      }
+
+      .tab-panel.is-active {
+        display: block;
+      }
+
+      .panel-grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .panel-grid.single {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .panel-card {
+        border: 1px solid hsl(var(--border));
+        border-radius: calc(var(--radius) + 0.25rem);
+        padding: 18px;
+        background: hsl(var(--card));
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+        display: grid;
+        gap: 12px;
+      }
+
+      .code-block {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        gap: 10px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        min-width: 0;
+      }
+
+      pre {
+        margin: 0;
+        background: hsl(var(--muted));
+        padding: 12px 14px;
+        border-radius: calc(var(--radius) + 0.1rem);
+        border: 1px solid hsl(var(--border));
+        overflow-x: auto;
+        max-width: 100%;
+        min-width: 0;
+        line-height: 1.6;
+        grid-column: 1 / -1;
+        grid-row: 2;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      }
+
+      code {
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+      }
+
+      .copy-button {
+        border: 1px solid hsl(var(--border));
+        background: hsl(var(--background));
+        color: hsl(var(--foreground));
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 6px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+        white-space: nowrap;
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: end;
+      }
+
+      .copy-button:hover {
+        transform: translateY(-1px);
+        background: hsl(var(--primary));
+        border-color: transparent;
+        color: hsl(var(--primary-foreground));
+      }
+
+      .copy-button:focus-visible {
+        outline: 2px solid hsl(var(--ring));
+        outline-offset: 2px;
+      }
+
+      .copy-button.copied {
+        background: hsl(var(--primary));
+        border-color: transparent;
+        color: hsl(var(--primary-foreground));
+      }
+
+      details {
+        border-radius: calc(var(--radius) + 0.2rem);
+        border: 1px solid hsl(var(--border));
+        padding: 12px;
+        background: hsl(var(--muted));
+      }
+
+      summary {
+        cursor: pointer;
+        font-weight: 600;
+        color: hsl(var(--foreground));
+        list-style: none;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      summary::before {
+        content: "+";
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        margin-right: 8px;
+        border-radius: 50%;
+        border: 1px solid hsl(var(--border));
+        color: hsl(var(--primary));
+        font-weight: 700;
+      }
+
+      details[open] summary::before {
+        content: "–";
+      }
+
+      ol {
+        padding-left: 20px;
+        margin: 12px 0 0;
+        color: hsl(var(--muted-foreground));
+      }
+
+      li {
+        margin-bottom: 14px;
+      }
+
+      .note {
+        margin-top: 28px;
+        padding: 14px 16px;
+        background: hsl(var(--muted));
+        border: 1px solid hsl(var(--border));
+        border-radius: calc(var(--radius) + 0.2rem);
+        color: hsl(var(--foreground));
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        border-bottom: 1px solid hsl(var(--primary));
+      }
+
+      a:hover {
+        color: hsl(var(--primary));
+      }
+
+      .repo-link {
+        position: absolute;
+        top: 18px;
+        right: 22px;
+        font-size: 0.85rem;
+        color: hsl(var(--muted-foreground));
+        border-bottom: 1px solid transparent;
+      }
+
+      .repo-link:hover {
+        color: hsl(var(--primary));
+        border-bottom-color: hsl(var(--primary));
+      }
+
+      @media (max-width: 720px) {
+        .shell {
+          padding: 26px;
+        }
+
+        .tab-list {
+          width: 100%;
+        }
+
+        .tab {
+          flex: 1 1 120px;
+          text-align: center;
+        }
+
+        .repo-link {
+          position: static;
+          display: block;
+          text-align: right;
+          margin-bottom: 12px;
+        }
+      }
+
+      @media (min-width: 960px) {
+        .panel-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="shell">
+        <a class="repo-link" href="https://github.com/lasersell/apt">View this repo on GitHub</a>
+        <header class="hero">
+          <div>
+            <div class="eyebrow">LaserSell</div>
+            <h1>LaserSell CLI</h1>
+            <p class="subtitle">Install via APT, Homebrew, or standalone binaries.</p>
+          </div>
+
+          <div class="quick-install">
+            <div>
+              <h2>Quick install</h2>
+              <p>Auto-selects the best method for your system.</p>
+            </div>
+            <div class="code-block">
+              <pre><code id="quick-install">curl -fsSL https://dl.lasersell.io/install.sh | bash</code></pre>
+              <button class="copy-button" data-copy-target="quick-install" aria-label="Copy quick install command">
+                Copy
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <section class="tabs">
+          <div class="section-title">
+            <h2>Install instructions</h2>
+            <p>Choose your OS to see the exact steps.</p>
+          </div>
+
+          <div class="tab-list" role="tablist" aria-label="Install instructions">
+            <button class="tab is-active" role="tab" aria-selected="true" aria-controls="panel-linux" id="tab-linux">
+              Linux
+            </button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="panel-macos" id="tab-macos">
+              macOS
+            </button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="panel-windows" id="tab-windows">
+              Windows
+            </button>
+          </div>
+
+          <div class="tab-panels">
+            <section class="tab-panel is-active" id="panel-linux" role="tabpanel" aria-labelledby="tab-linux">
+              <div class="panel-grid single">
+                <article class="panel-card">
+                  <h3>Manual APT setup</h3>
+                  <p>Best for Debian/Ubuntu/WSL. APT packages are built for amd64 and arm64.</p>
+                  <ol>
+                    <li>
+                      Add the repository signing key:
+                      <div class="code-block" style="margin-top: 10px;">
+                        <pre><code id="apt-key">curl -fsSL https://dl.lasersell.io/KEY.gpg | sudo gpg --dearmor -o /usr/share/keyrings/lasersell-archive-keyring.gpg</code></pre>
+                        <button class="copy-button" data-copy-target="apt-key" aria-label="Copy APT key command">
+                          Copy
+                        </button>
+                      </div>
+                    </li>
+                    <li>
+                      Add the APT source list:
+                      <div class="code-block" style="margin-top: 10px;">
+                        <pre><code id="apt-source">ARCH="$(dpkg --print-architecture)"
+echo "deb [arch=${ARCH} signed-by=/usr/share/keyrings/lasersell-archive-keyring.gpg] https://dl.lasersell.io stable main" | sudo tee /etc/apt/sources.list.d/lasersell.list &gt; /dev/null</code></pre>
+                        <button class="copy-button" data-copy-target="apt-source" aria-label="Copy APT source command">
+                          Copy
+                        </button>
+                      </div>
+                    </li>
+                    <li>
+                      Update and install the package:
+                      <div class="code-block" style="margin-top: 10px;">
+                        <pre><code id="apt-install">sudo apt update
+sudo apt install lasersell</code></pre>
+                        <button class="copy-button" data-copy-target="apt-install" aria-label="Copy APT install command">
+                          Copy
+                        </button>
+                      </div>
+                    </li>
+                  </ol>
+                </article>
+              </div>
+            </section>
+
+            <section class="tab-panel" id="panel-macos" role="tabpanel" aria-labelledby="tab-macos">
+              <div class="panel-grid single">
+                <article class="panel-card">
+                  <h3>Homebrew</h3>
+                  <p>Fastest on macOS with Homebrew.</p>
+                  <div class="code-block">
+                    <pre><code id="macos-brew">brew tap lasersell/lasersell
+brew install lasersell</code></pre>
+                    <button class="copy-button" data-copy-target="macos-brew" aria-label="Copy Homebrew install command">
+                      Copy
+                    </button>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <section class="tab-panel" id="panel-windows" role="tabpanel" aria-labelledby="tab-windows">
+              <div class="panel-grid single">
+                <article class="panel-card">
+                  <h3>Windows via WSL2</h3>
+                  <p>Install WSL, then run the Linux installer inside your distro.</p>
+                  <ol>
+                    <li>
+                      Install WSL2 (PowerShell as Administrator):
+                      <div class="code-block" style="margin-top: 10px;">
+                        <pre><code id="windows-wsl">wsl --install</code></pre>
+                        <button class="copy-button" data-copy-target="windows-wsl" aria-label="Copy WSL install command">
+                          Copy
+                        </button>
+                      </div>
+                    </li>
+                    <li>
+                      Restart your computer.
+                    </li>
+                    <li>
+                      Launch your WSL distro.
+                    </li>
+                    <li>
+                      Run the LaserSell installer inside WSL:
+                      <div class="code-block" style="margin-top: 10px;">
+                        <pre><code id="windows-install">curl -fsSL https://dl.lasersell.io/install.sh | bash</code></pre>
+                        <button class="copy-button" data-copy-target="windows-install" aria-label="Copy WSL install command">
+                          Copy
+                        </button>
+                      </div>
+                    </li>
+                  </ol>
+                </article>
+              </div>
+            </section>
+
+          </div>
+        </section>
+
+        <section class="note">
+          <strong>License:</strong> LaserSell software is proprietary and requires a valid commercial license to use.
+        </section>
+      </div>
+    </main>
+
+    <script>
+      const copyButtons = document.querySelectorAll("[data-copy-target]");
+      const tabs = document.querySelectorAll(".tab");
+      const panels = document.querySelectorAll(".tab-panel");
+
+      function setCopiedState(button) {
+        const original = button.textContent;
+        button.textContent = "Copied!";
+        button.classList.add("copied");
+        setTimeout(() => {
+          button.textContent = original;
+          button.classList.remove("copied");
+        }, 1600);
+      }
+
+      function fallbackCopy(text, button) {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        try {
+          document.execCommand("copy");
+          setCopiedState(button);
+        } catch (error) {
+          console.warn("Copy failed", error);
+        }
+        document.body.removeChild(textarea);
+      }
+
+      copyButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const target = button.getAttribute("data-copy-target");
+          const codeBlock = document.getElementById(target);
+          if (!codeBlock) return;
+          const text = codeBlock.textContent.trim();
+
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard
+              .writeText(text)
+              .then(() => setCopiedState(button))
+              .catch(() => fallbackCopy(text, button));
+          } else {
+            fallbackCopy(text, button);
+          }
+        });
+      });
+
+      function activateTab(tabId) {
+        tabs.forEach((tab) => {
+          const isActive = tab.id === tabId;
+          tab.classList.toggle("is-active", isActive);
+          tab.setAttribute("aria-selected", isActive ? "true" : "false");
+          tab.tabIndex = isActive ? 0 : -1;
+        });
+
+        panels.forEach((panel) => {
+          panel.classList.toggle("is-active", panel.getAttribute("aria-labelledby") === tabId);
+        });
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => activateTab(tab.id));
+        tab.addEventListener("keydown", (event) => {
+          if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+          event.preventDefault();
+          const currentIndex = Array.from(tabs).indexOf(tab);
+          const direction = event.key === "ArrowRight" ? 1 : -1;
+          const nextIndex = (currentIndex + direction + tabs.length) % tabs.length;
+          tabs[nextIndex].focus();
+          activateTab(tabs[nextIndex].id);
+        });
+      });
+    </script>
+  </body>
+</html>
