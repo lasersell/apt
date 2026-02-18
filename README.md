@@ -1,7 +1,7 @@
 # LaserSell APT Repository
 
 [![GitHub Pages Status](https://github.com/lasersell/apt/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/lasersell/apt/actions/workflows/pages/pages-build-deployment)
-[![Website Up](https://img.shields.io/website?url=https%3A%2F%2Fdl.lasersell.io%2FKEY.gpg&label=apt-repo&up_message=online&down_message=offline)](https://dl.lasersell.io/)
+[![Website Up](https://img.shields.io/website?url=https%3A%2F%2Fdl.lasersell.io%2Flasersell.asc&label=apt-repo&up_message=online&down_message=offline)](https://dl.lasersell.io/)
 [![Version](https://img.shields.io/badge/version-0.1.3-blue)](https://dl.lasersell.io/pool/main/l/lasersell/)
 [![Platform](https://img.shields.io/badge/platform-linux--amd64%2Farm64%20%2B%20macos-lightgrey)](https://dl.lasersell.io/)
 [![License](https://img.shields.io/badge/license-Proprietary-red)](https://dl.lasersell.io/LICENSE)
@@ -10,14 +10,6 @@
 
 ```sh
 curl -fsSL https://dl.lasersell.io/install.sh | bash
-```
-
-## Migrate from the old repo (lasersell.github.io)
-
-If you previously added the old `https://lasersell.github.io/apt` repo, run:
-
-```sh
-curl -fsSL https://dl.lasersell.io/migrate.sh | bash
 ```
 
 This repository hosts the LaserSell APT package repository (served via GitHub Pages), plus multi-platform binaries.
@@ -31,7 +23,7 @@ curl -fsSL https://dl.lasersell.io/install.sh | bash
 ## Linux (Debian/Ubuntu/WSL) without install.sh (manual APT)
 
 ```sh
-curl -fsSL https://dl.lasersell.io/KEY.gpg | sudo gpg --dearmor -o /usr/share/keyrings/lasersell-archive-keyring.gpg
+curl -fsSL https://dl.lasersell.io/lasersell.asc | sudo gpg --dearmor -o /usr/share/keyrings/lasersell-archive-keyring.gpg
 ARCH="$(dpkg --print-architecture)"
 echo "deb [arch=${ARCH} signed-by=/usr/share/keyrings/lasersell-archive-keyring.gpg] https://dl.lasersell.io stable main" | sudo tee /etc/apt/sources.list.d/lasersell.list > /dev/null
 sudo apt update

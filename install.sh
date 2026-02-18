@@ -179,7 +179,7 @@ install_via_apt() {
   ok "Dependencies installed"
 
   step "[3/5] Add signing key 🔑"
-  curl -fsSL "${BASE_URL}/KEY.gpg" | ${sudo_cmd} gpg --dearmor -o /usr/share/keyrings/lasersell-archive-keyring.gpg
+  curl -fsSL "${BASE_URL}/lasersell.asc" | ${sudo_cmd} gpg --dearmor -o /usr/share/keyrings/lasersell-archive-keyring.gpg
   ok "Signing key added"
 
   step "[4/5] Add APT source 🧾"
