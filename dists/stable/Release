@@ -1,0 +1,32 @@
+Architectures: amd64 arm64
+Codename: stable
+Components: main
+Date: Wed, 25 Feb 2026 14:27:06 +0000
+Description: Lasersell APT Repository
+Label: Lasersell
+Origin: Lasersell
+Suite: stable
+MD5Sum:
+ ac6eddc721a116be58ae2128b06a60f2              186 Release
+ d96d4b3fa7f1ca56fc1faa59e803489c              549 main/binary-amd64/Packages
+ fd2f5a16ffbf781adcab48d47be02606              404 main/binary-amd64/Packages.gz
+ dfe1c56381bc69ed4d422886b9084c3c              549 main/binary-arm64/Packages
+ eb484d1c72d54116322532c27f0f0663              404 main/binary-arm64/Packages.gz
+SHA1:
+ 8369c1f70318ca95f5ed89a2eb9078f15c30be0b              186 Release
+ 91e0d1add2853be2d45e662a1a304060ac78658b              549 main/binary-amd64/Packages
+ cae1a36e107f33b2cd6d82c0a959af6214135b0c              404 main/binary-amd64/Packages.gz
+ a18fbec8aa78dc73dc093438dbc3ddf6ce38bbd3              549 main/binary-arm64/Packages
+ 2f4d1e8ef6b0212109f8372b775ddf1b3e8b7016              404 main/binary-arm64/Packages.gz
+SHA256:
+ 9960e59e88cc2e9ed730ec57bffa17ea588ba1a90265e719d4789525c2f4711d              186 Release
+ 3684651caca81b7b0e0f17a17fbd3853476aa7ed8107afb3930f409b56aba76b              549 main/binary-amd64/Packages
+ 547fdb1eefc06c9e16b82a23c2687545710668cdfcccf79387fdb9b0a7f2290a              404 main/binary-amd64/Packages.gz
+ 55692bb88926665de484e8ac456b5e8a59cdef7737ea580546ce399f3c595c49              549 main/binary-arm64/Packages
+ 1257df840d49cd357918be191282a5dea949ffa86060a05eda8baa5752f7cfa5              404 main/binary-arm64/Packages.gz
+SHA512:
+ d0051ee47645bd19c000496498008fccbcbb331cb88e2435a278b737ce8179bd83450d7b8d838f8f5d4113e419c6d5b327809890d3cb0f6e6e03ddd84f18bf98              186 Release
+ ecd4e67ac7395ba6b7de5847498f56db821e8eecca9f75c3f4def23d77d1a209724c9e7fecea5357250dc6b7139b9f41604805f3a73932a53651657edcdad042              549 main/binary-amd64/Packages
+ e32b657e49150796f6fa2325fe4acc376486c53d5c677321ccab801676fd8cdd69a07b8c745e5317ba1859bb093fda5eb91a28a132ae322a8c4e3ed31f90f6b8              404 main/binary-amd64/Packages.gz
+ 875fafca33a099be221f94b11978c998d2e79591c19fbe4d02f5a159023b46c34a61548faf71ec846823e96a4c23a7556387ac2c792d53af4271673c721f5567              549 main/binary-arm64/Packages
+ 6f4846e2bce6bed6d4070919460e218c4e0e9b3e4ca7bf8fe799bb6569dced34fc68c8c6c80395199cbb6392e1bca993683a47d996183dd1d9170ed1e2fcd7dc              404 main/binary-arm64/Packages.gz

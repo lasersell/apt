@@ -1,0 +1,17 @@
+Package: lasersell
+Version: 0.3.0
+Architecture: arm64
+Maintainer: LaserSell <support@lasersell.io>
+Installed-Size: 6351
+Filename: pool/main/l/lasersell/lasersell_0.3.0_arm64.deb
+Size: 3208892
+MD5sum: 64fbaa4d0c6a468d3917c3d7382edd3f
+SHA1: 3462de775d93939f607a80540fe31226cf55185e
+SHA256: 92a94d9896a0b22b1b351fe257ebe2ba14f57d06c4e17cc449435e24807acf3b
+Section: default
+Priority: optional
+Homepage: https://lasersell.io
+Description: LaserSell: Solana trading client with exit intelligence for automated strategy execution
+License: MIT
+Vendor: none
+
