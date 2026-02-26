@@ -1,13 +1,13 @@
 Package: lasersell
-Version: 0.3.0
+Version: 0.4.0
 Architecture: arm64
 Maintainer: LaserSell <support@lasersell.io>
 Installed-Size: 6351
-Filename: pool/main/l/lasersell/lasersell_0.3.0_arm64.deb
-Size: 3208892
-MD5sum: 64fbaa4d0c6a468d3917c3d7382edd3f
-SHA1: 3462de775d93939f607a80540fe31226cf55185e
-SHA256: 92a94d9896a0b22b1b351fe257ebe2ba14f57d06c4e17cc449435e24807acf3b
+Filename: pool/main/l/lasersell/lasersell_0.4.0_arm64.deb
+Size: 3212334
+MD5sum: 2e966a1e7500aea5b2098e03c6656988
+SHA1: 99f7bbb2123958c8b96dd43f5356157f8e7f9e11
+SHA256: 4150de6d2f54fd1b067c101f9fab3646afa402b9234c83a14dc1d46b91150653
 Section: default
 Priority: optional
 Homepage: https://lasersell.io
