@@ -1,13 +1,13 @@
 Package: lasersell
-Version: 0.4.1
+Version: 0.4.2
 Architecture: amd64
 Maintainer: LaserSell <support@lasersell.io>
-Installed-Size: 7286
-Filename: pool/main/l/lasersell/lasersell_0.4.1_amd64.deb
-Size: 3401186
-MD5sum: 8f500bb9b5733c49fd75e45506e4d0ee
-SHA1: a22132a1b7fcc121ae23ea07f7c73b53aa9ff8ab
-SHA256: a94eb89380a5353472000b12286b20ef7129b8475d09d1a495b574189d719aef
+Installed-Size: 7294
+Filename: pool/main/l/lasersell/lasersell_0.4.2_amd64.deb
+Size: 3408502
+MD5sum: 3cd2e6485667907e16d3c37c172f3f4b
+SHA1: 542d7a87ea82b661282bf10ee5a874b065bd52c5
+SHA256: f4f147892bf3b7c93965fc1b15ada6daaa197c87e3689a472e23acd3bcf4e998
 Section: default
 Priority: optional
 Homepage: https://lasersell.io
