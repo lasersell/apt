@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "pub_date": "2026-03-12T15:41:38Z",
+  "notes": "",
+  "platforms": {
+    "darwin-aarch64": {
+      "url": "https://dl.lasersell.io/desktop/macos/1.0.0/LaserSell_1.0.0_aarch64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRZ2JJME1PdTVtbTZaOS9WTTUxSjBHYXV1dGNyUUdFcktFYUNsRVNhYmxIMnRRNnZTNk1xQytqMlZWSGJUczVxenhCS1BCcDBVTmNvMkxqVEtDTVpPL1ZSQzlnUXRxNWcwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzczMzI5NzE2CWZpbGU6TGFzZXJTZWxsLmFwcC50YXIuZ3oKcGUzNjlhMFZ0VVhBUkVza3RUV1UzRGx0ZVR1S3ZhRlBIUXVqOUM5Nk1pa3ZPYUtPZ3N5ekJTc0dpd3NNY2xHYnZmYzM0ZGhZUXMvMURRU3Bod2JyQXc9PQo="
+    },
+    "darwin-x86_64": {
+      "url": "https://dl.lasersell.io/desktop/macos/1.0.0/LaserSell_1.0.0_x64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRZ2JJME1PdTVtbTdlakRkUXRlRGJ3djVER2JHbld5NERDVU1Ga1JrbDJqdkp0eXhHR3RvZmtTNlZaVmppaGJZUkNqWStSTU95b2FaVjZFOW44eWs4cFJ1VStIV1lIMVFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzczMzMwMDk3CWZpbGU6TGFzZXJTZWxsLmFwcC50YXIuZ3oKOGZIcTh4ZWVYTjR6NmxSWEw5dENmM0RkWDBITFdwcmxVNFdWMFpqMldGSGgxYUluK0FBbkJLUHE3RytlNFBqT3piOTBqU2U3Qm1wZ2FlQVljL0NhQ3c9PQo="
+    }
+  }
+}
