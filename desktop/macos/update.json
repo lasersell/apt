@@ -1,15 +1,15 @@
 {
-  "version": "1.0.3",
-  "pub_date": "2026-03-13T18:01:23Z",
+  "version": "1.0.4",
+  "pub_date": "2026-03-16T18:23:59Z",
   "notes": "",
   "platforms": {
     "darwin-aarch64": {
-      "url": "https://dl.lasersell.io/desktop/macos/1.0.3/LaserSell_1.0.3_aarch64.app.tar.gz",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRZ2JJME1PdTVtbXdWbXhYWlJMMFVmVS9sN0VOZXdVWTBLRitRZVBQOXJXSDVZQnJvNG5ITVpickxGZENHdkd5UGgzUHhuL1lVRHF2R0tpaWVjQXlNZ1BQWUh2SlNrVlFVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzczNDI0NTk4CWZpbGU6TGFzZXJTZWxsLmFwcC50YXIuZ3oKVGdtWlJ2VFVITi9hS3E3eWQxZGdIUXpvSU12aTVjVFg2djhHSEhRQW5iZXlrYUFLbmxLZnppZC9rSVB5M2o2bUlxa05DY09wSjNaUEx2RzV0c2tIQ2c9PQo="
+      "url": "https://dl.lasersell.io/desktop/macos/1.0.4/LaserSell_1.0.4_aarch64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRZ2JJME1PdTVtbTdjMkwvTldnUkpiSkdQMFlxVzVPNkpFc3NIcjRFam1GNXhGU3JadzB1ZzR1UlBONWt6d2tyY2ZMSjF4ZC8vR3NkUno1YXhaVEFqYWJnL09BUlZLNWd3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzczNjg1MDQ3CWZpbGU6TGFzZXJTZWxsLmFwcC50YXIuZ3oKSmFnNkxMc1Z1d250cTlkckpLa2FMY25GOHdBZDVoWGJkVU5Fd3IvdVF5cHZJS3NZZ3Zmb3ZVbThtWTdtQ0JMSWd1Vm5ocG54M0RHaW0rNy9oRXlXQ0E9PQo="
     },
     "darwin-x86_64": {
-      "url": "https://dl.lasersell.io/desktop/macos/1.0.3/LaserSell_1.0.3_x64.app.tar.gz",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRZ2JJME1PdTVtbS9Bd1FmWS91dVNXVERCSnE2ODlRMDllUjlhR1I5b3Z2OTNuU0I5MktCa2FuL1JZNXA3bmpDa1M2MVJxQzJoTmV0ekIrOFQvNTgycGVpRzNZeFExWlFvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzczNDI0ODgyCWZpbGU6TGFzZXJTZWxsLmFwcC50YXIuZ3oKTlhWelNNUndoYTBvajUzaW9NYjVaT1U0aWVmblZuQmo3RXhzemZITWtUbHVGdno5VEk4QldRVDI5Y0tqK1l0cGpUdGVUMGVyaGVzVFRnenQzRERhQ1E9PQo="
+      "url": "https://dl.lasersell.io/desktop/macos/1.0.4/LaserSell_1.0.4_x64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRZ2JJME1PdTVtbXhsaUdzNE56MGU0VTdjN00rTzVDMnRhaGlQc3UyaFlYU2x3ZlNHVStSOGlOOElSbERlYkFFeXpvaStuM3kyWWFOSW9iSlJTWFBKa1hyeFdjWHhtc2dvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzczNjg1NDM5CWZpbGU6TGFzZXJTZWxsLmFwcC50YXIuZ3oKdTV2WFNFemNTeXRkUWZXY3grbXpOM3hGSFZyUXlGRkQ4U0psK3lLOG4vV3VOV0dmRGxMOWFtaWs3ZlJSOVhnZmpmUXB0cS9UeE1KR3hEeG1tR1BSQWc9PQo="
     }
   }
 }
